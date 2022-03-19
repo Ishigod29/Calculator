@@ -19,7 +19,7 @@
 html,
 body {
   padding: 0;
-  margin: 40px;
+  margin: 0;
   background-color: var(--bg1);
   font-family: 'Spartan', sans-serif;
   display: flex;
@@ -68,3 +68,4 @@ button{
   height: 80px;
   box-shadow: inset 0em -5px var(--color6);
 }
+

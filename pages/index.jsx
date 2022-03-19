@@ -5,6 +5,7 @@ import Head from 'next/head'
 export default function Home() {
 
   const [result, setResult] = useState('')
+  const [theme, setTheme] = useState(false)
 
   const handleClick = (e) =>{
     setResult(result.concat(e.target.name))
@@ -26,6 +27,10 @@ export default function Home() {
     }
   }
 
+  const changeTheme = () =>{
+    setTheme(!theme)
+  }
+
   return (
     <>
     <Head>
@@ -33,7 +38,27 @@ export default function Home() {
         Calculator | NextJS
       </title>
     </Head>
+    
     <div className={styles.container}>
+      <div className={styles.navContainer}> 
+        <h1>calc</h1>
+        <div className={styles.themeBtn}>
+          <h4>THEME</h4>
+
+          <div class={styles.switchToggle}>
+
+          <input id="on" name="state-d" type="radio" checked="checked" />
+          <label for="on" onclick=""><span></span></label>
+
+          <input id="na" name="state-d" type="radio"  />
+          <label for="na" class="disabled" onclick=""><span></span></label>
+
+          <input id="off" name="state-d" type="radio" />
+          <label for="off" onclick=""><span></span></label>
+
+        </div>
+        </div>
+      </div>
       <form>
         <input type="text" value={result}/>
       </form>
@@ -60,7 +85,7 @@ export default function Home() {
         </div>
 
         <div className={styles.flex}>
-        <button className={styles.actBtn} id='Reset' onClick={clear}>Reset</button>
+        <button className={!theme ? styles.actBtn : styles.actBtnLight} id='Reset' onClick={clear}>Reset</button>
         <button className={styles.resBtn} id='calculate' onClick={calculate}>=</button>
         </div>
 
